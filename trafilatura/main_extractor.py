@@ -331,6 +331,9 @@ def handle_paragraphs(element: _Element, potential_tags: Set[str], options: Extr
             #    else:
             #        newsub.tail = processed_child.text
             newsub.text, newsub.tail = processed_child.text, processed_child.tail
+
+            if processed_child.tag == 'graphic':
+                newsub = handle_image(processed_child)
             processed_element.append(newsub)
         child.tag = "done"
     # finish
